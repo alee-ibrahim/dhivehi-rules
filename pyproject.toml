@@ -1,0 +1,20 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+license = "MIT"
+name = "dhivehi-rules"
+version = "0.1.0"
+description = "Canonical Dhivehi writing rules: Thaana validation, DBA spelling and word division, register/grammar checks, romanisation, TTS script gate."
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = []
+
+[project.scripts]
+dhivehi-script-gate = "dhivehi_rules.script_gate:main"
+dhivehi-dba-check = "dhivehi_rules.dba_rules:main"
+dhivehi-dba-fix = "dhivehi_rules.dba_fix:main"
+
+[tool.setuptools]
+packages = ["dhivehi_rules"]

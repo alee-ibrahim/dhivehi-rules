@@ -1,0 +1,136 @@
+{
+  "_about": "Register and word-choice rules for spoken Dhivehi addressed to an audience: ads, presenters, video voice-over. Checked by dhivehi_rules/dba_rules.py only when a context is given (check(text, context='ad'), or --context on the command line). Without a context nothing here runs, so the spelling and word-division checks behave exactly as before. Read guides/spoken_register.md for the evidence and reasoning behind each rule. Patterns are Python regexes; [ހ-޿] is the Thaana block. severity 'error' = do not ship; 'warn' = reported with a leading ~, judge in context. 'replace' is an re.Match.expand() template that gives the suggested form, keeping any case ending.",
+  "contexts": {
+    "ad": "advertisement or promotional copy, spoken or on screen",
+    "presenter": "a presenter, host or reviewer speaking to camera",
+    "video": "any narration or voice-over addressed to viewers"
+  },
+  "rules": [
+    {
+      "id": "reg_address_tiyabaimeehun",
+      "severity": "error",
+      "contexts": ["ad", "presenter", "video"],
+      "pattern": "(?<![ހ-޿])ތިޔަ ?ބައިމީހުން([ހ-޿]*)",
+      "replace": "ތިޔަބޭފުޅުން\\1",
+      "why": "Scripture-translation register (Quran and hadith 'O you people'), not how anyone addresses viewers. Public speakers say ތިޔަބޭފުޅުން or ހުރިހާ ބޭފުޅުން.",
+      "evidence": "Speeches: ތިޔަބޭފުޅުން 2,595 to ތިޔަބައިމީހުން 114. News (8 sites): 70% of ތިޔަބައިމީހުން (3,263 of 4,680) are in sentences that also quote or cite Quran/hadith. Promotional news items: 26, against 128 for ތިޔަ(ބޭފުޅުން)."
+    },
+    {
+      "id": "reg_address_kalé",
+      "severity": "error",
+      "contexts": ["ad", "presenter", "video"],
+      "pattern": "(?<![ހ-޿])ކަލޭ(?!ގެފާނ)(?:މެން)?[ހ-޿]*",
+      "replace": "ތިޔަބޭފުޅުން",
+      "why": "ކަލޭ / ކަލޭމެން is intimate or rude second person (quarrels, friends, fiction dialogue). Never to an audience. ކަލޭގެފާނު, the honorific for prophets, is not matched.",
+      "evidence": "Speeches: ކަލޭ + ކަލޭމެން 23 in 469 speeches, against ތިޔަބޭފުޅުން 2,595. In news it shows up in quoted dialogue and fiction."
+    },
+    {
+      "id": "reg_address_tibaa",
+      "severity": "warn",
+      "contexts": ["ad", "presenter", "video"],
+      "pattern": "(?<![ހ-޿])ތިބާ(?!ވަތ)[ހ-޿]*",
+      "replace": "ތިޔަބޭފުޅުން",
+      "why": "ތިބާ is the written generic 'you/one' of essays, proverbs and advice columns. It reads as a printed slogan, not a person talking. Fine on a poster; in speech prefer ތިޔަބޭފުޅުން.",
+      "evidence": "Speeches: ތިބާ 4. News: 5,931; sampled hits are opinion and advice columns, a recurring religious column, and slogans."
+    },
+    {
+      "id": "reg_first_person_aharen",
+      "severity": "error",
+      "contexts": ["ad", "presenter", "video"],
+      "pattern": "(?<![ހ-޿])އަހަރެން(?!މެން)([ހ-޿]*)",
+      "replace": "އަޅުގަނޑު\\1",
+      "why": "އަހަރެން is the private, written-narrative 'I' (fiction, diaries, translated foreign quotes). A speaker in public says އަޅުގަނޑު.",
+      "evidence": "Speeches: އަޅުގަނޑު 16,614 to އަހަރެން 13. Majlis sittings: 586,790 to 148. In news, އަހަރެން appears in short stories and in translations of foreign people's quotes; Maldivian officials are quoted with އަޅުގަނޑު."
+    },
+    {
+      "id": "reg_first_person_aharen",
+      "severity": "error",
+      "contexts": ["ad", "presenter", "video"],
+      "pattern": "(?<![ހ-޿])އަހަންނަށް",
+      "replace": "އަޅުގަނޑަށް",
+      "why": "Dative of އަހަރެން; see above.",
+      "evidence": "As above."
+    },
+    {
+      "id": "reg_first_person_aharen",
+      "severity": "error",
+      "contexts": ["ad", "presenter", "video"],
+      "pattern": "(?<![ހ-޿])އަހަންނާ",
+      "replace": "އަޅުގަނޑާ",
+      "why": "Comitative of އަހަރެން; see above.",
+      "evidence": "As above."
+    },
+    {
+      "id": "reg_first_person_aharemen",
+      "severity": "error",
+      "contexts": ["ad", "presenter", "video"],
+      "pattern": "(?<![ހ-޿])އަހަރެމެން([ހ-޿]*)",
+      "replace": "އަޅުގަނޑުމެން\\1",
+      "why": "Plural of the same informal 'I'. A business speaking to customers says އަޅުގަނޑުމެން.",
+      "evidence": "Speeches: އަޅުގަނޑުމެން 20,315 to އަހަރެމެން 24. Promotional news items: 'އަޅުގަނޑުމެންގެ ކަސްޓަމަރުން' 279 times."
+    },
+    {
+      "id": "reg_first_person_thimanna",
+      "severity": "warn",
+      "contexts": ["ad", "presenter", "video"],
+      "pattern": "(?<![ހ-޿])ތިމަންނަ[ހ-޿]*",
+      "replace": "އަޅުގަނޑު",
+      "why": "ތިމަންނަ is the 'I' of official letters, legal statements and oaths. Too stiff for a presenter.",
+      "evidence": "Majlis records 8,782 (formal statements); speeches 171; promotional news items 177."
+    },
+    {
+      "id": "reg_plain_imperative",
+      "severity": "warn",
+      "contexts": ["ad", "presenter", "video"],
+      "pattern": "(?<![ހ-޿])(ގުޅާ|ބަލާލާ|ބަލާ|ގަންނާ)(?=\\s*[.!،]|\\s*$)",
+      "replace": "",
+      "why": "Plain imperatives are how you talk to a child or a close friend. Ads ask the audience with the honorific forms: ގުޅުއްވާ, ބައްލަވާ / ބައްލަވާލައްވާ, ގަންނަވާ, ވަޑައިގަންނަވާ, ހޯއްދަވާ, ...ކުރައްވާ.",
+      "evidence": "'<7-digit number> އަށް ގުޅުއްވާ/ގުޅުއްވުމުން' 1,396 to '... ގުޅާ' 275 in news (the plain ones are mostly reported instructions, not ad copy)."
+    },
+    {
+      "id": "reg_calque_delivery_free",
+      "severity": "error",
+      "contexts": ["ad", "presenter", "video"],
+      "pattern": "(?<![ހ-޿])ޑެލިވަރީ (ފްރީ|ހިލޭ)(?![ހ-޿])",
+      "replace": "ހިލޭ ޑެލިވަރީ",
+      "why": "English word order ('delivery free'). Dhivehi puts the modifier first: ހިލޭ ޑެލިވަރީ.",
+      "evidence": "News: ހިލޭ ޑެލިވަރީ 399, ފްރީ ޑެލިވަރީ 114 (mostly a film title), ޑެލިވަރީ ހިލޭ / ޑެލިވަރީ ފްރީ 0."
+    },
+    {
+      "id": "reg_calque_whatsapp_verb",
+      "severity": "warn",
+      "contexts": ["ad", "presenter", "video"],
+      "pattern": "(?<![ހ-޿])ވަޓްސްއެޕް ?ކުރައްވާ",
+      "replace": "ވަޓްސްއެޕް މެދުވެރިކޮށް މެސެޖުކުރައްވާ",
+      "why": "'WhatsApp us' as a verb is English. Written Dhivehi copy says ވަޓްސްއެޕް މެދުވެރިކޮށް (via WhatsApp) with a real verb: މެސެޖުކުރައްވާ, އޯޑަރުކުރެއްވޭނެ. Casual speech does say 'ވަޓްސްއެޕް ކޮށްލައްވާ', hence warn, not error.",
+      "evidence": "News: ވަޓްސްއެޕް ކުރައްވާ 1, ވަޓްސްއެޕްކުރައްވާ 0; ވަޓްސްއެޕް މެދުވެރިކޮށް 253. Real copy (halinews): 'ވަޓްސްއަޕް (WhatsApp) މެދުވެރިކޮށް ވެސް މެސެޖުކުރައްވައިގެން އޯޑަރު ކުރެއްވޭނެއެވެ'."
+    },
+    {
+      "id": "reg_calque_good_day",
+      "severity": "warn",
+      "contexts": ["ad", "presenter", "video"],
+      "pattern": "(?<![ހ-޿])ހެޔޮ (ދުވަހެއް|ހެނދުނެއް|ރެއެއް|ހަވީރެއް)(?![ހ-޿])",
+      "replace": "ބާއްޖަވެރި ދުވަހަކަށް އެދެން",
+      "why": "'Have a good day / Good morning' translated word for word. Not used as a greeting or sign-off. Dhivehi wishes: ބާއްޖަވެރި ދުވަހަކަށް / ރޭގަނޑަކަށް އެދެން.",
+      "evidence": "News: ހެޔޮ ދުވަހެއް/ހެނދުނެއް/ރެއެއް 5, none of them a greeting; ބާއްޖަވެރި ދުވަހަކަށް/ރޭގަނޑަކަށް 120. A TV news sign-off quoted on esfiya: 'ޚަބަރު ބެއްލެވީތީ ޝުކުރިއްޔާ.. އެންމެ ބޭފުޅުންނަށް ވެސް ބާއްޖަވެރި، އަމާން، ރައްކާތެރި ރެޔަކަށް...'."
+    },
+    {
+      "id": "reg_calque_thanks_order",
+      "severity": "warn",
+      "contexts": ["ad", "presenter", "video"],
+      "pattern": "(?<![ހ-޿])ޝުކުރިއްޔާ ([ހ-޿]+ތީ)(?![ހ-޿])",
+      "replace": "\\1 ޝުކުރިއްޔާ",
+      "why": "'Thank you for watching' in English order. Dhivehi gives the reason first: ބެއްލެވީތީ ޝުކުރިއްޔާ.",
+      "evidence": "News: 'ބެއްލެވީތީ ޝުކުރިއްޔާ' 3 (TV programme and news sign-offs), 'ޝުކުރިއްޔާ ބެއްލެވީތީ' 0."
+    },
+    {
+      "id": "reg_unattested_coinage",
+      "severity": "warn",
+      "contexts": ["ad", "presenter", "video"],
+      "pattern": "(?<![ހ-޿])(ފެންފައިޕ[ހ-޿]*|މަލަ ނާރާ)",
+      "replace": "",
+      "why": "Coined in earlier generated scripts and not found in the corpus or Radheef: ފެންފައިޕު (0 hits) for 'faucet', މަލަ ނާރާ (the single hit is a mis-split of ހަމަލަ) for 'rust-proof'. Use the product name (ޕުލް އައުޓް ފޯސެޓް) or a neutral word (ބާވަތް), and say what the material is instead (ސްޓެއިންލެސް ސްޓީލުން ހަދާފައިވާ).",
+      "evidence": "corpus_vocab.tsv + 26 crawled news sites: ފެންފައިޕު 0, ފެނުގެ ޓޭޕު 0; ޓޭޕް in the corpus is adhesive or recording tape. ފޯސެޓް appears only in translated instruction data."
+    }
+  ]
+}

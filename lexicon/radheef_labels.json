@@ -1,0 +1,40 @@
+{
+  "_what": "Meaning of the bracketed labels that open some Radheef senses, e.g. '(ސ.) ހަރުގަނޑު.' Established 2026-09-26 from evidence, not from an Academy legend (none was found in the APK or web app).",
+  "_evidence": [
+    "The current Radheef app models each meaning with dialect, specific_usage_atolls (a list), regions, diction_level and literary_class fields; the old DB compresses these into a leading bracket.",
+    "Every single-letter label is a real Maldivian atoll code letter (ހ ނ ރ ބ ޅ އ މ ފ ދ ތ ލ ގ ޏ ސ); combinations (ޏ.ސ., ލ.ގ., ގ.ސ.) are multi-atoll usage, matching the list-valued specific_usage_atolls.",
+    "The most frequent labels are ސ (Addu), ގ (Huvadhu) and ޏ (Fuvahmulah) -- the three most divergent Dhivehi dialects; (މަލިކު) spells Maliku/Minicoy out in full.",
+    "Sound-pattern check against the open comparative-dhivehi-dialect-project data: where standard Dhivehi ends in -u, Huvadhu ends in -e/-aa (15/18); Radheef (ގ.) headwords paired with a standard -u word end in -e/-aa 9/15. Addu (-a/-u) and Fuvahmulah (-o) are consistent at smaller n.",
+    "(ބދ.): the web app names a special category 'ބޯދާ ލަފުޒު' (ބ+ދ). Radheef prose uses 'ބޯދާ ޒަމާނު' (Buddhist era) and 'މީގެ ބޯދާ ލަފުޒަކީ …'. The (ބދ.) headwords are Sanskrit/Pali-derived: ބަވަނަ ސުންދުރަ (bhuvana sundara), ހޮބަލޯކަ (loka), ކައްތިރި (kshatriya), މުރަނު (marana)."
+  ],
+  "confidence": {
+    "atoll_labels_mean_dialect_usage": "high",
+    "ގ = Huvadhu": "high",
+    "ސ = Addu": "high",
+    "ޏ = Fuvahmulah": "high",
+    "ބދ = ބޯދާ ލަފުޒު (Buddhist-era / Old Dhivehi word)": "high",
+    "ހ = Haa Alif and/or Haa Dhaalu": "medium (letter is ambiguous between the two Haa atolls)"
+  },
+
+  "atolls": {
+    "ސ": "އައްޑޫ",
+    "ގ": "ހުވަދޫ",
+    "ޏ": "ފުވައްމުލަކު",
+    "ހ": "ހ. އަތޮޅު",
+    "ނ": "ނ. އަތޮޅު",
+    "ރ": "ރ. އަތޮޅު",
+    "ބ": "ބ. އަތޮޅު",
+    "ޅ": "ޅ. އަތޮޅު",
+    "އ": "އ. އަތޮޅު",
+    "މ": "މ. އަތޮޅު",
+    "ފ": "ފ. އަތޮޅު",
+    "ދ": "ދ. އަތޮޅު",
+    "ތ": "ތ. އަތޮޅު",
+    "ލ": "ލ. އަތޮޅު"
+  },
+  "named": {
+    "މަލިކު": {"kind": "dialect", "dv": "މަލިކު"},
+    "ބދ": {"kind": "archaic", "dv": "ބޯދާ ލަފުޒު"},
+    "ހަރުބަހެއް": {"kind": "register", "dv": "ހަރުބަހެއް"}
+  }
+}

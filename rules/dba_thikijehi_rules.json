@@ -1,0 +1,131 @@
+{
+  "_source": "ތާނައިގައި ހުރި ނުކުތާޖެހި އަކުރުތައް ބޭނުންކުރާނެ ހަމަ (Rules for using dotted/thikijehi letters in Thaana), Dhivehi Bahuge Academy, ISBN 978-99915-69-61-1, 14 April 2024. Extracted from thaanaiga-huri-nukuthaajehi-290524.pdf.",
+  "_summary": "Default is plain (non-dotted) letters. Thikijehi is minimized: kept only for the cases listed in 'keep' and 'required_thikijehi'. When Radheef lists both forms, the Academy prefers the plain one.",
+  "reduce_to_plain": {
+    "_rule": "Rule 5 substitution table: foreign Arabic sounds alien to Dhivehi are written with the nearest Dhivehi letter.",
+    "ޘ": "ސ",
+    "ޛ": "ޒ",
+    "ޟ": "ޒ",
+    "ޡ": "ޒ",
+    "ޥ": "ވ",
+    "ޜ": "ޒ",
+    "_also_reduce_in_general_use": {
+      "_note": "Rule 9 (Radheef prefers plain) + examples across the doc. These have thikijehi only in the required categories or as homograph markers; otherwise plain.",
+      "ޙ": "ހ",
+      "ޞ": "ސ",
+      "ޠ": "ތ",
+      "ޢ": "އ",
+      "ޤ": "ގ"
+    }
+  },
+  "keep_dhivehi_sounds": {
+    "_rule": "Rule 3: these three are now considered Dhivehi sounds and must NOT be dropped.",
+    "letters": [
+      "ޚ",
+      "ޣ",
+      "ޝ"
+    ],
+    "examples": [
+      "ޚަބަރު",
+      "ޚިޔާލު",
+      "މަޣުރިބު",
+      "މަޝްހޫރު"
+    ]
+  },
+  "required_thikijehi": {
+    "_rule": "Rules 1,4,6,10 + homographs: write WITH dots in these cases.",
+    "homograph_disambiguation": [
+      {
+        "dotted": "ޢަމަލު",
+        "gloss": "deed/action",
+        "plain": "އަމަލު",
+        "plain_gloss": "intoxicant"
+      },
+      {
+        "dotted": "ޚަބަރު",
+        "gloss": "news",
+        "plain": "ހަބަރު",
+        "plain_gloss": "a bitter black medicinal substance"
+      },
+      {
+        "dotted": "ޤާޟީ",
+        "gloss": "qazi/judge",
+        "other": "ޣާޒީ",
+        "other_gloss": "ghazi"
+      },
+      {
+        "dotted": "ވަޞީލަތް",
+        "gloss": "derived from Arabic waSala",
+        "plain": "ވަސީލަތް",
+        "plain_gloss": "means/instrument (in Radheef)"
+      }
+    ],
+    "hijri_months": [
+      "ޝަޢުބާން",
+      "ރަމަޟާން",
+      "ޛުލްޤަޢިދާ",
+      "މުޙައްރަމް"
+    ],
+    "arabic_personal_names_in_official_text": [
+      "ޢަބްދުއްރަޙުމާން",
+      "މަރްޔަމް ޢީސާ",
+      "ޤާސިމް",
+      "ނާޡިމް",
+      "ޢަޒީޒް"
+    ],
+    "arabic_titles_positions": [
+      "ޤާޟީ",
+      "ޢާމިލު",
+      "މުޙާމީ"
+    ],
+    "names_of_allah_99": [
+      "އައްރަޙުމާން",
+      "އައްރަޙީމް",
+      "ޛުލްޖަލާލިވަލްއިކްރާމް"
+    ],
+    "religious_phrases_preserve": [
+      "ޞައްލަﷲ ޢަލައިހި ޥަސައްލަމް"
+    ]
+  },
+  "exceptions_write_arabic": {
+    "_rule": "Rule 10.",
+    "titles_before_names": [
+      "އަލްފާޟިލް",
+      "އަލްފާޟިލާ"
+    ],
+    "name_of_allah_arabic_script_only": [
+      "ﷲ",
+      "މާތްﷲ",
+      "ﷲ ސުބްޙާނަހޫ ވަތަޢާލާ"
+    ]
+  },
+  "radheef_prefers_plain_examples": {
+    "_rule": "Rule 9: Radheef's plain form is preferred when two forms exist.",
+    "ގައުމު": "ޤައުމު",
+    "އުސޫލު": "އުޞޫލު",
+    "އަސްލު": "އަޞްލު",
+    "ހަގީގަތް": "ޙަޤީޤަތް",
+    "_more_plain": [
+      "ގަވާއިދު",
+      "ހާސިލު",
+      "މަގުސަދު",
+      "ތަހުގީގު"
+    ]
+  },
+  "homographs_keep_dots": {
+    "_rule": "Rule 1: where dropping the dots changes the word, the dots stay. Curated from Radheef pairs whose definitions differ (checked by hand 2026-09-26), plus the Academy's own examples.",
+    "words": [
+      "ޢަމަލު",
+      "ޚަބަރު",
+      "ޤާޟީ",
+      "ޣާޒީ",
+      "ވަޞީލަތް",
+      "ތަޙުލީލު",
+      "ނަޞްރު",
+      "ޙޫރުން",
+      "މުޤައްރަރު",
+      "ނާޤާބިލު",
+      "ޠ"
+    ]
+  }
+}

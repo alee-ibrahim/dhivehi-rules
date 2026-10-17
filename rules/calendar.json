@@ -1,0 +1,291 @@
+{
+  "_source": "Dhivehi Academy (ދިވެހިބަހުގެ އެކެޑަމީ), official spellings of the Hijri and Gregorian month names, Government Gazette announcement, 13 August 2013, https://www.gazette.gov.mv/iulaan/4791.",
+  "_usage": "Write the 'official' form. Forms under 'non_standard_variants' are recognised (for reading, search and normalisation) but must not be produced. Hijri months are a required-thikijehi category in the DBA 2024 dotted-letter rules: keep their dots. corpus_count = occurrences in lexicon/corpus_vocab.tsv; in_radheef = listed as a Radheef headword.",
+  "hijri_months": [
+    {
+      "number": 1,
+      "official": "މުޙައްރަމް",
+      "official_corpus_count": 192,
+      "official_in_radheef": true
+    },
+    {
+      "number": 2,
+      "official": "ޞަފަރު",
+      "official_corpus_count": 134,
+      "official_in_radheef": true
+    },
+    {
+      "number": 3,
+      "official": "ރަބީޢުލްއައްވަލް",
+      "official_corpus_count": 176,
+      "official_in_radheef": false
+    },
+    {
+      "number": 4,
+      "official": "ރަބީޢުލްއާޚިރު",
+      "official_corpus_count": 119,
+      "official_in_radheef": true
+    },
+    {
+      "number": 5,
+      "official": "ޖުމާދަލްއޫލާ",
+      "official_corpus_count": 97,
+      "official_in_radheef": true
+    },
+    {
+      "number": 6,
+      "official": "ޖުމާދަލްއާޚިރާ",
+      "official_corpus_count": 98,
+      "official_in_radheef": true
+    },
+    {
+      "number": 7,
+      "official": "ރަޖަބު",
+      "official_corpus_count": 352,
+      "official_in_radheef": true
+    },
+    {
+      "number": 8,
+      "official": "ޝަޢުބާން",
+      "official_corpus_count": 275,
+      "official_in_radheef": true
+    },
+    {
+      "number": 9,
+      "official": "ރަމަޟާން",
+      "official_corpus_count": 9875,
+      "official_in_radheef": true
+    },
+    {
+      "number": 10,
+      "official": "ޝައްވާލް",
+      "official_corpus_count": 382,
+      "official_in_radheef": false
+    },
+    {
+      "number": 11,
+      "official": "ޛުލްޤަޢިދާ",
+      "official_corpus_count": 94,
+      "official_in_radheef": true
+    },
+    {
+      "number": 12,
+      "official": "ޛުލްޙިއްޖާ",
+      "official_corpus_count": 178,
+      "official_in_radheef": true
+    }
+  ],
+  "gregorian_months": [
+    {
+      "number": 1,
+      "english": "January",
+      "official": "ޖަނަވަރީ",
+      "official_corpus_count": 5470,
+      "official_in_radheef": true,
+      "non_standard_variants": []
+    },
+    {
+      "number": 2,
+      "english": "February",
+      "official": "ފެބުރުވަރީ",
+      "official_corpus_count": 2360,
+      "official_in_radheef": true,
+      "non_standard_variants": [
+        {
+          "form": "ފެބްރުއަރީ",
+          "seen_in": "non-standard variant seen in use",
+          "corpus_count": 13738,
+          "in_radheef": false
+        }
+      ]
+    },
+    {
+      "number": 3,
+      "english": "March",
+      "official": "މާރިޗު",
+      "official_corpus_count": 4458,
+      "official_in_radheef": true,
+      "non_standard_variants": []
+    },
+    {
+      "number": 4,
+      "english": "April",
+      "official": "އެޕްރީލް",
+      "official_corpus_count": 6074,
+      "official_in_radheef": true,
+      "non_standard_variants": [
+        {
+          "form": "އޭޕްރީލް",
+          "seen_in": "non-standard variant seen in use",
+          "corpus_count": 8206,
+          "in_radheef": false
+        }
+      ]
+    },
+    {
+      "number": 5,
+      "english": "May",
+      "official": "މޭ",
+      "official_corpus_count": 0,
+      "official_in_radheef": true,
+      "non_standard_variants": [
+        {
+          "form": "މެއި",
+          "seen_in": "non-standard variant seen in use",
+          "corpus_count": 11242,
+          "in_radheef": true
+        }
+      ]
+    },
+    {
+      "number": 6,
+      "english": "June",
+      "official": "ޖޫން",
+      "official_corpus_count": 25206,
+      "official_in_radheef": true,
+      "non_standard_variants": []
+    },
+    {
+      "number": 7,
+      "english": "July",
+      "official": "ޖުލައި",
+      "official_corpus_count": 25784,
+      "official_in_radheef": true,
+      "non_standard_variants": []
+    },
+    {
+      "number": 8,
+      "english": "August",
+      "official": "އޮގަސްޓު",
+      "official_corpus_count": 4572,
+      "official_in_radheef": true,
+      "non_standard_variants": [
+        {
+          "form": "އޯގަސްޓު",
+          "seen_in": "non-standard variant seen in use",
+          "corpus_count": 1058,
+          "in_radheef": false
+        }
+      ]
+    },
+    {
+      "number": 9,
+      "english": "September",
+      "official": "ސެޕްޓެންބަރު",
+      "official_corpus_count": 2204,
+      "official_in_radheef": true,
+      "non_standard_variants": [
+        {
+          "form": "ސެޕްޓެމްބަރު",
+          "seen_in": "non-standard variant seen in use",
+          "corpus_count": 11635,
+          "in_radheef": true
+        },
+        {
+          "form": "ސެޕްޓެމްބަރ",
+          "seen_in": "machine-written letters; also malformed Thaana (bare final consonant)",
+          "corpus_count": 799,
+          "in_radheef": false
+        }
+      ]
+    },
+    {
+      "number": 10,
+      "english": "October",
+      "official": "އޮކްޓޫބަރު",
+      "official_corpus_count": 7578,
+      "official_in_radheef": true,
+      "non_standard_variants": []
+    },
+    {
+      "number": 11,
+      "english": "November",
+      "official": "ނޮވެންބަރު",
+      "official_corpus_count": 4381,
+      "official_in_radheef": true,
+      "non_standard_variants": [
+        {
+          "form": "ނޮވެމްބަރު",
+          "seen_in": "non-standard variant seen in use",
+          "corpus_count": 14301,
+          "in_radheef": false
+        }
+      ]
+    },
+    {
+      "number": 12,
+      "english": "December",
+      "official": "ޑިސެންބަރު",
+      "official_corpus_count": 3444,
+      "official_in_radheef": true,
+      "non_standard_variants": [
+        {
+          "form": "ޑިސެމްބަރު",
+          "seen_in": "non-standard variant seen in use",
+          "corpus_count": 14600,
+          "in_radheef": false
+        }
+      ]
+    }
+  ],
+  "weekdays": {
+    "_source": "Standard Dhivehi weekday names. Not part of the 2013 Gazette month list. Index follows JavaScript Date.getUTCDay(): Sunday = 0.",
+    "_usage": "Letters write the bare name inside '... ވާ <weekday> ދުވަހުގެ'.",
+    "days": [
+      {
+        "index": 0,
+        "english": "Sunday",
+        "official": "އާދީއްތަ",
+        "official_corpus_count": 4406,
+        "official_in_radheef": true
+      },
+      {
+        "index": 1,
+        "english": "Monday",
+        "official": "ހޯމަ",
+        "official_corpus_count": 10064,
+        "official_in_radheef": true
+      },
+      {
+        "index": 2,
+        "english": "Tuesday",
+        "official": "އަންގާރަ",
+        "official_corpus_count": 8823,
+        "official_in_radheef": true
+      },
+      {
+        "index": 3,
+        "english": "Wednesday",
+        "official": "ބުދަ",
+        "official_corpus_count": 9184,
+        "official_in_radheef": true
+      },
+      {
+        "index": 4,
+        "english": "Thursday",
+        "official": "ބުރާސްފަތި",
+        "official_corpus_count": 12999,
+        "official_in_radheef": true
+      },
+      {
+        "index": 5,
+        "english": "Friday",
+        "official": "ހުކުރު",
+        "official_corpus_count": 18395,
+        "official_in_radheef": true
+      },
+      {
+        "index": 6,
+        "english": "Saturday",
+        "official": "ހޮނިހިރު",
+        "official_corpus_count": 11473,
+        "official_in_radheef": true
+      }
+    ]
+  },
+  "date_formats": {
+    "_source": "Conventional date formats used in official Dhivehi letters",
+    "gregorian": "<day> <month> <year>, e.g. 12 އޮގަސްޓު 2026",
+    "hijri": "<day> <month> <year>, e.g. 24 ރަބީޢުލްއައްވަލް 1448 (Umm al-Qura reckoning; Maldives declares months by sighting, so an official calendar may differ by a day at a month boundary)"
+  }
+}

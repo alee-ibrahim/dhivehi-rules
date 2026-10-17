@@ -1,0 +1,2536 @@
+{
+ "_about": "Grammar rules for Dhivehi, built from corpus counts. These target the errors an LLM makes most often when writing Dhivehi. They are checked by dhivehi_rules/dba_rules.py (grammar_check) whenever a context is given, or with --grammar, and they always run in dhivehi_rules/script_gate.py. Without a context or --grammar they do not run, so the default spelling and word-division output is unchanged. Each rule has corpus evidence: news (26 crawled news sites), 469 public speeches and 93k Majlis sittings. See guides/grammar.md. severity 'error' means do not ship. 'warn' is reported with a leading ~; judge it in context. 'replace' is an re.Match.expand() template for the suggested form.",
+ "existential": {
+  "_about": "Agreement between a noun and the existential/locative verb: ހުރި (standing things, physical objects, most plurals), އޮތް (abstract and lying things: ފުރުސަތު, ސުވާލު, ހައްލު...), ތިބި (animate plurals: people, a group). The verb is checked against the noun right before it (predicate: 'ސުވާލެއް ހުރި') and, for a bare participle, the noun right after it (relative: 'ހުރި ސުވާލެއް'). Number matters: ސުވާލެއް takes އޮތް but ސުވާލުތައް takes ހުރި. 'nouns' maps a key to raw corpus counts per number (sgi = indefinite singular -އެއް; sg = bare; pl = -ތައް/-ތަކެއް/-ތަކެތި, or a human plural in -ން) and position. A use is flagged when the corpus prefers one verb for that slice with share >= min_share over at least min_n uses, and the verb used has share <= max_used_share. It is an error when the preferred share is >= error_share and n >= error_n; otherwise it is a warning. The key is the noun with the number suffix and a final ު/ް removed, as in the miner.",
+  "thresholds": {
+   "min_n": 30,
+   "min_share": 0.8,
+   "max_used_share": 0.1,
+   "error_share": 0.9,
+   "error_n": 100
+  },
+  "verb_forms": [
+   [
+    "ހުރިއްޔާ",
+    "އޮތިއްޔާ",
+    "ތިބިއްޔާ"
+   ],
+   [
+    "ހުއްޓެވެ",
+    "އޮތެވެ",
+    "ތިއްބެވެ"
+   ],
+   [
+    "ހުއްޓޭ",
+    "އޮތޭ",
+    "ތިއްބޭ"
+   ],
+   [
+    "ހުރެއެވެ",
+    "އޮވެއެވެ",
+    "ތިބެއެވެ"
+   ],
+   [
+    "ހުންނަނީ",
+    "އޮންނަނީ",
+    "ތިބެނީ"
+   ],
+   [
+    "ހުންނާނެ",
+    "އޮންނާނެ",
+    "ތިބޭނެ"
+   ],
+   [
+    "ހުންނާނީ",
+    "އޮންނާނީ",
+    "ތިބޭނީ"
+   ],
+   [
+    "ހުންނަ",
+    "އޮންނަ",
+    "ތިބޭ"
+   ],
+   [
+    "ހުރުމ",
+    "އޮތުމ",
+    "ތިބުމ"
+   ],
+   [
+    "ހުރުން",
+    "އޮތުން",
+    "ތިބުން"
+   ],
+   [
+    "ހުރީ",
+    "އޮތީ",
+    "ތިބީ"
+   ],
+   [
+    "ހުރި",
+    "އޮތް",
+    "ތިބި"
+   ],
+   [
+    "ހުރެ",
+    "އޮވެ",
+    "ތިބެ"
+   ],
+   [
+    "ހުރޭ",
+    "އޮވޭ",
+    "ތިބޭ"
+   ]
+  ],
+  "_verb_forms": "Equivalent forms [ހުރި-class, އޮތް-class, ތިބި-class], longest prefix first. A verb token, after an optional އެބަ, is rewritten by swapping this prefix, so ހުރިނަމަ becomes އޮތްނަމަ and އެބަހުރި becomes އެބައޮތް.",
+  "nouns": {
+   "ސުވާލ": {
+    "noun": "ސުވާލު",
+    "sgi": {
+     "pred": {
+      "huri": 30,
+      "oth": 367,
+      "thibi": 0
+     },
+     "rel": {
+      "huri": 50,
+      "oth": 162,
+      "thibi": 0
+     }
+    },
+    "sg": {
+     "pred": {
+      "huri": 62,
+      "oth": 153,
+      "thibi": 0
+     },
+     "rel": {
+      "huri": 40,
+      "oth": 228,
+      "thibi": 0
+     }
+    },
+    "pl": {
+     "pred": {
+      "huri": 158,
+      "oth": 29,
+      "thibi": 0
+     },
+     "rel": {
+      "huri": 130,
+      "oth": 15,
+      "thibi": 0
+     }
+    }
+   },
+   "ފުރުސަތ": {
+    "noun": "ފުރުސަތު",
+    "sgi": {
+     "pred": {
+      "huri": 0,
+      "oth": 517,
+      "thibi": 0
+     },
+     "rel": {
+      "huri": 12,
+      "oth": 290,
+      "thibi": 0
+     }
+    },
+    "sg": {
+     "pred": {
+      "huri": 26,
+      "oth": 10978,
+      "thibi": 0
+     },
+     "rel": {
+      "huri": 34,
+      "oth": 661,
+      "thibi": 0
+     }
+    },
+    "pl": {
+     "pred": {
+      "huri": 162,
+      "oth": 203,
+      "thibi": 0
+     },
+     "rel": {
+      "huri": 8455,
+      "oth": 205,
+      "thibi": 0
+     }
+    }
+   },
+   "މައްސަލަ": {
+    "noun": "މައްސަލަ",
+    "sgi": {
+     "pred": {
+      "huri": 1115,
+      "oth": 1533,
+      "thibi": 0
+     },
+     "rel": {
+      "huri": 355,
+      "oth": 1389,
+      "thibi": 16
+     }
+    },
+    "sg": {
+     "pred": {
+      "huri": 1365,
+      "oth": 1393,
+      "thibi": 5
+     },
+     "rel": {
+      "huri": 404,
+      "oth": 1199,
+      "thibi": 124
+     }
+    },
+    "pl": {
+     "pred": {
+      "huri": 3432,
+      "oth": 360,
+      "thibi": 0
+     },
+     "rel": {
+      "huri": 3326,
+      "oth": 152,
+      "thibi": 11
+     }
+    }
+   },
+   "މަޢުލޫމާތ": {
+    "noun": "މަޢުލޫމާތު",
+    "sgi": {
+     "pred": {
+      "huri": 21,
+      "oth": 30,
+      "thibi": 0
+     },
+     "rel": {
+      "huri": 47,
+      "oth": 19,
+      "thibi": 0
+     }
+    },
+    "sg": {
+     "pred": {
+      "huri": 228,
+      "oth": 31,
+      "thibi": 0
+     },
+     "rel": {
+      "huri": 218,
+      "oth": 53,
+      "thibi": 3
+     }
+    },
+    "pl": {
+     "pred": {
+      "huri": 62,
+      "oth": 3,
+      "thibi": 0
+     },
+     "rel": {
+      "huri": 99,
+      "oth": 0,
+      "thibi": 0
+     }
+    }
+   },
+   "މައުލޫމާތ": {
+    "noun": "މައުލޫމާތު",
+    "sgi": {
+     "pred": {
+      "huri": 58,
+      "oth": 38,
+      "thibi": 0
+     },
+     "rel": {
+      "huri": 67,
+      "oth": 29,
+      "thibi": 0
+     }
+    },
+    "sg": {
+     "pred": {
+      "huri": 543,
+      "oth": 43,
+      "thibi": 0
+     },
+     "rel": {
+      "huri": 479,
+      "oth": 29,
+      "thibi": 7
+     }
+    },
+    "pl": {
+     "pred": {
+      "huri": 95,
+      "oth": 7,
+      "thibi": 0
+     },
+     "rel": {
+      "huri": 258,
+      "oth": 4,
+      "thibi": 0
+     }
+    }
+   },
+   "ވަގުތ": {
+    "noun": "ވަގުތު",
+    "sgi": {
+     "pred": {
+      "huri": 0,
+      "oth": 97,
+      "thibi": 0
+     },
+     "rel": {
+      "huri": 36,
+      "oth": 119,
+      "thibi": 29
+     }
+    },
+    "sg": {
+     "pred": {
+      "huri": 1075,
+      "oth": 1975,
+      "thibi": 839
+     },
+     "rel": {
+      "huri": 512,
+      "oth": 793,
+      "thibi": 227
+     }
+    },
+    "pl": {
+     "pred": {
+      "huri": 27,
+      "oth": 23,
+      "thibi": 0
+     },
+     "rel": {
+      "huri": 73,
+      "oth": 27,
+      "thibi": 13
+     }
+    }
+   },
+   "ގޮތ": {
+    "noun": "ގޮތް",
+    "sgi": {
+     "pred": {
+      "huri": 1341,
+      "oth": 1986,
+      "thibi": 0
+     },
+     "rel": {
+      "huri": 677,
+      "oth": 1016,
+      "thibi": 19
+     }
+    },
+    "sg": {
+     "pred": {
+      "huri": 181,
+      "oth": 478,
+      "thibi": 3
+     },
+     "rel": {
+      "huri": 4409,
+      "oth": 5081,
+      "thibi": 252
+     }
+    },
+    "pl": {
+     "pred": {
+      "huri": 504,
+      "oth": 286,
+      "thibi": 0
+     },
+     "rel": {
+      "huri": 166,
+      "oth": 62,
+      "thibi": 0
+     }
+    }
+   },
+   "ހައްލ": {
+    "noun": "ހައްލު",
+    "sgi": {
+     "pred": {
+      "huri": 0,
+      "oth": 133,
+      "thibi": 0
+     },
+     "rel": {
+      "huri": 10,
+      "oth": 258,
+      "thibi": 0
+     }
+    },
+    "sg": {
+     "pred": {
+      "huri": 5,
+      "oth": 116,
+      "thibi": 0
+     },
+     "rel": {
+      "huri": 10,
+      "oth": 137,
+      "thibi": 0
+     }
+    },
+    "pl": {
+     "rel": {
+      "huri": 25,
+      "oth": 13,
+      "thibi": 0
+     }
+    }
+   },
+   "ޝަރުތ": {
+    "noun": "ޝަރުތު",
+    "sgi": {
+     "pred": {
+      "huri": 11,
+      "oth": 38,
+      "thibi": 0
+     }
+    },
+    "sg": {
+     "rel": {
+      "huri": 12,
+      "oth": 22,
+      "thibi": 9
+     }
+    },
+    "pl": {
+     "pred": {
+      "huri": 143,
+      "oth": 33,
+      "thibi": 0
+     },
+     "rel": {
+      "huri": 55,
+      "oth": 17,
+      "thibi": 0
+     }
+    }
+   },
+   "ޗާންސ": {
+    "noun": "ޗާންސް",
+    "sg": {
+     "pred": {
+      "huri": 0,
+      "oth": 60,
+      "thibi": 0
+     }
+    }
+   },
+   "ޖާގަ": {
+    "noun": "ޖާގަ",
+    "sgi": {
+     "pred": {
+      "huri": 45,
+      "oth": 327,
+      "thibi": 0
+     }
+    },
+    "sg": {
+     "rel": {
+      "huri": 50,
+      "oth": 228,
+      "thibi": 0
+     }
+    },
+    "pl": {
+     "rel": {
+      "huri": 51,
+      "oth": 3,
+      "thibi": 0
+     }
+    }
+   },
+   "ހައްގ": {
+    "noun": "ހައްގު",
+    "sgi": {
+     "pred": {
+      "huri": 0,
+      "oth": 136,
+      "thibi": 0
+     },
+     "rel": {
+      "huri": 0,
+      "oth": 236,
+      "thibi": 0
+     }
+    },
+    "sg": {
+     "pred": {
+      "huri": 0,
+      "oth": 768,
+      "thibi": 0
+     },
+     "rel": {
+      "huri": 0,
+      "oth": 100,
+      "thibi": 0
+     }
+    },
+    "pl": {
+     "pred": {
+      "huri": 19,
+      "oth": 96,
+      "thibi": 0
+     },
+     "rel": {
+      "huri": 25,
+      "oth": 28,
+      "thibi": 0
+     }
+    }
+   },
+   "ޙައްޤ": {
+    "noun": "ޙައްޤު",
+    "sgi": {
+     "pred": {
+      "huri": 0,
+      "oth": 79,
+      "thibi": 0
+     },
+     "rel": {
+      "huri": 3,
+      "oth": 153,
+      "thibi": 0
+     }
+    },
+    "sg": {
+     "pred": {
+      "huri": 4,
+      "oth": 334,
+      "thibi": 0
+     },
+     "rel": {
+      "huri": 3,
+      "oth": 49,
+      "thibi": 0
+     }
+    },
+    "pl": {
+     "pred": {
+      "huri": 52,
+      "oth": 80,
+      "thibi": 0
+     },
+     "rel": {
+      "huri": 76,
+      "oth": 47,
+      "thibi": 0
+     }
+    }
+   },
+   "ނިޒާމ": {
+    "noun": "ނިޒާމު",
+    "sgi": {
+     "pred": {
+      "huri": 34,
+      "oth": 932,
+      "thibi": 0
+     },
+     "rel": {
+      "huri": 45,
+      "oth": 250,
+      "thibi": 0
+     }
+    },
+    "sg": {
+     "pred": {
+      "huri": 102,
+      "oth": 1319,
+      "thibi": 0
+     },
+     "rel": {
+      "huri": 20,
+      "oth": 238,
+      "thibi": 0
+     }
+    },
+    "pl": {
+     "pred": {
+      "huri": 93,
+      "oth": 60,
+      "thibi": 0
+     },
+     "rel": {
+      "huri": 32,
+      "oth": 6,
+      "thibi": 0
+     }
+    }
+   },
+   "ގާނޫނ": {
+    "noun": "ގާނޫނު",
+    "sgi": {
+     "pred": {
+      "huri": 7,
+      "oth": 414,
+      "thibi": 0
+     },
+     "rel": {
+      "huri": 14,
+      "oth": 246,
+      "thibi": 0
+     }
+    },
+    "sg": {
+     "pred": {
+      "huri": 22,
+      "oth": 1480,
+      "thibi": 0
+     },
+     "rel": {
+      "huri": 60,
+      "oth": 236,
+      "thibi": 5
+     }
+    },
+    "pl": {
+     "pred": {
+      "huri": 178,
+      "oth": 134,
+      "thibi": 0
+     },
+     "rel": {
+      "huri": 184,
+      "oth": 16,
+      "thibi": 0
+     }
+    }
+   },
+   "ޤާނޫނ": {
+    "noun": "ޤާނޫނު",
+    "sgi": {
+     "pred": {
+      "huri": 0,
+      "oth": 548,
+      "thibi": 0
+     },
+     "rel": {
+      "huri": 21,
+      "oth": 193,
+      "thibi": 0
+     }
+    },
+    "sg": {
+     "pred": {
+      "huri": 9,
+      "oth": 545,
+      "thibi": 0
+     },
+     "rel": {
+      "huri": 26,
+      "oth": 138,
+      "thibi": 4
+     }
+    },
+    "pl": {
+     "pred": {
+      "huri": 129,
+      "oth": 47,
+      "thibi": 0
+     },
+     "rel": {
+      "huri": 153,
+      "oth": 6,
+      "thibi": 0
+     }
+    }
+   },
+   "އުސޫލ": {
+    "noun": "އުސޫލު",
+    "sgi": {
+     "pred": {
+      "huri": 8,
+      "oth": 541,
+      "thibi": 0
+     },
+     "rel": {
+      "huri": 8,
+      "oth": 190,
+      "thibi": 0
+     }
+    },
+    "sg": {
+     "pred": {
+      "huri": 24,
+      "oth": 485,
+      "thibi": 0
+     },
+     "rel": {
+      "huri": 7,
+      "oth": 386,
+      "thibi": 3
+     }
+    },
+    "pl": {
+     "pred": {
+      "huri": 350,
+      "oth": 390,
+      "thibi": 0
+     },
+     "rel": {
+      "huri": 90,
+      "oth": 91,
+      "thibi": 3
+     }
+    }
+   },
+   "ބާރ": {
+    "noun": "ބާރު",
+    "sgi": {
+     "pred": {
+      "huri": 112,
+      "oth": 627,
+      "thibi": 0
+     },
+     "rel": {
+      "huri": 322,
+      "oth": 430,
+      "thibi": 0
+     }
+    },
+    "sg": {
+     "pred": {
+      "huri": 585,
+      "oth": 3434,
+      "thibi": 4
+     },
+     "rel": {
+      "huri": 125,
+      "oth": 404,
+      "thibi": 0
+     }
+    },
+    "pl": {
+     "pred": {
+      "huri": 51,
+      "oth": 319,
+      "thibi": 28
+     },
+     "rel": {
+      "huri": 195,
+      "oth": 204,
+      "thibi": 3
+     }
+    }
+   },
+   "ގުޅުނ": {
+    "noun": "ގުޅުން",
+    "sg": {
+     "rel": {
+      "huri": 331,
+      "oth": 9724,
+      "thibi": 0
+     }
+    },
+    "pl": {
+     "pred": {
+      "huri": 69,
+      "oth": 410,
+      "thibi": 0
+     },
+     "rel": {
+      "huri": 47,
+      "oth": 716,
+      "thibi": 0
+     }
+    }
+   },
+   "ބިރ": {
+    "noun": "ބިރު",
+    "sgi": {
+     "pred": {
+      "huri": 0,
+      "oth": 76,
+      "thibi": 0
+     },
+     "rel": {
+      "huri": 60,
+      "oth": 149,
+      "thibi": 0
+     }
+    },
+    "sg": {
+     "pred": {
+      "huri": 43,
+      "oth": 2796,
+      "thibi": 0
+     },
+     "rel": {
+      "huri": 46,
+      "oth": 151,
+      "thibi": 0
+     }
+    }
+   },
+   "ނުރައްކާ": {
+    "noun": "ނުރައްކާ",
+    "sg": {
+     "pred": {
+      "huri": 91,
+      "oth": 2043,
+      "thibi": 0
+     },
+     "rel": {
+      "huri": 71,
+      "oth": 650,
+      "thibi": 0
+     }
+    },
+    "pl": {
+     "pred": {
+      "huri": 69,
+      "oth": 21,
+      "thibi": 0
+     },
+     "rel": {
+      "huri": 107,
+      "oth": 46,
+      "thibi": 0
+     }
+    }
+   },
+   "ހާލަތ": {
+    "noun": "ހާލަތު",
+    "sgi": {
+     "pred": {
+      "huri": 19,
+      "oth": 456,
+      "thibi": 0
+     },
+     "rel": {
+      "huri": 16,
+      "oth": 150,
+      "thibi": 15
+     }
+    },
+    "sg": {
+     "pred": {
+      "huri": 2617,
+      "oth": 3001,
+      "thibi": 0
+     },
+     "rel": {
+      "huri": 183,
+      "oth": 1063,
+      "thibi": 68
+     }
+    },
+    "pl": {
+     "pred": {
+      "huri": 102,
+      "oth": 22,
+      "thibi": 0
+     }
+    }
+   },
+   "ފައިދާ": {
+    "noun": "ފައިދާ",
+    "sgi": {
+     "pred": {
+      "huri": 63,
+      "oth": 247,
+      "thibi": 0
+     },
+     "rel": {
+      "huri": 8,
+      "oth": 84,
+      "thibi": 0
+     }
+    },
+    "sg": {
+     "pred": {
+      "huri": 4479,
+      "oth": 221,
+      "thibi": 0
+     },
+     "rel": {
+      "huri": 67,
+      "oth": 110,
+      "thibi": 0
+     }
+    },
+    "pl": {
+     "pred": {
+      "huri": 121,
+      "oth": 30,
+      "thibi": 0
+     },
+     "rel": {
+      "huri": 40,
+      "oth": 9,
+      "thibi": 0
+     }
+    }
+   },
+   "ތަޖުރިބާ": {
+    "noun": "ތަޖުރިބާ",
+    "sgi": {
+     "pred": {
+      "huri": 85,
+      "oth": 11,
+      "thibi": 0
+     }
+    },
+    "sg": {
+     "pred": {
+      "huri": 2383,
+      "oth": 44,
+      "thibi": 25
+     },
+     "rel": {
+      "huri": 50,
+      "oth": 7,
+      "thibi": 26
+     }
+    },
+    "pl": {
+     "pred": {
+      "huri": 60,
+      "oth": 0,
+      "thibi": 0
+     }
+    }
+   },
+   "އަގ": {
+    "noun": "އަގު",
+    "sgi": {
+     "pred": {
+      "huri": 291,
+      "oth": 119,
+      "thibi": 0
+     }
+    },
+    "sg": {
+     "pred": {
+      "huri": 2174,
+      "oth": 70,
+      "thibi": 0
+     },
+     "rel": {
+      "huri": 164,
+      "oth": 58,
+      "thibi": 0
+     }
+    },
+    "pl": {
+     "pred": {
+      "huri": 511,
+      "oth": 16,
+      "thibi": 0
+     },
+     "rel": {
+      "huri": 101,
+      "oth": 9,
+      "thibi": 0
+     }
+    }
+   },
+   "ފައިސާ": {
+    "noun": "ފައިސާ",
+    "sgi": {
+     "pred": {
+      "huri": 99,
+      "oth": 88,
+      "thibi": 0
+     },
+     "rel": {
+      "huri": 162,
+      "oth": 38,
+      "thibi": 0
+     }
+    },
+    "sg": {
+     "pred": {
+      "huri": 2297,
+      "oth": 152,
+      "thibi": 4
+     },
+     "rel": {
+      "huri": 3338,
+      "oth": 213,
+      "thibi": 9
+     }
+    },
+    "pl": {
+     "pred": {
+      "huri": 81,
+      "oth": 4,
+      "thibi": 0
+     },
+     "rel": {
+      "huri": 377,
+      "oth": 13,
+      "thibi": 0
+     }
+    }
+   },
+   "ދަތި": {
+    "noun": "ދަތި",
+    "sg": {
+     "rel": {
+      "huri": 84,
+      "oth": 146,
+      "thibi": 17
+     }
+    },
+    "pl": {
+     "pred": {
+      "huri": 2096,
+      "oth": 53,
+      "thibi": 0
+     },
+     "rel": {
+      "huri": 1170,
+      "oth": 45,
+      "thibi": 0
+     }
+    }
+   },
+   "ހުނަރ": {
+    "noun": "ހުނަރު",
+    "sgi": {
+     "pred": {
+      "huri": 96,
+      "oth": 0,
+      "thibi": 0
+     },
+     "rel": {
+      "huri": 45,
+      "oth": 0,
+      "thibi": 0
+     }
+    },
+    "sg": {
+     "pred": {
+      "huri": 625,
+      "oth": 23,
+      "thibi": 6
+     },
+     "rel": {
+      "huri": 65,
+      "oth": 0,
+      "thibi": 4
+     }
+    },
+    "pl": {
+     "pred": {
+      "huri": 103,
+      "oth": 0,
+      "thibi": 0
+     },
+     "rel": {
+      "huri": 67,
+      "oth": 0,
+      "thibi": 0
+     }
+    }
+   },
+   "ހިދުމަތ": {
+    "noun": "ހިދުމަތް",
+    "sgi": {
+     "rel": {
+      "huri": 22,
+      "oth": 14,
+      "thibi": 0
+     }
+    },
+    "sg": {
+     "pred": {
+      "huri": 21,
+      "oth": 43,
+      "thibi": 0
+     }
+    },
+    "pl": {
+     "pred": {
+      "huri": 59,
+      "oth": 15,
+      "thibi": 0
+     },
+     "rel": {
+      "huri": 122,
+      "oth": 4,
+      "thibi": 4
+     }
+    }
+   },
+   "ޚިދުމަތ": {
+    "noun": "ޚިދުމަތް",
+    "sgi": {
+     "pred": {
+      "huri": 8,
+      "oth": 22,
+      "thibi": 0
+     },
+     "rel": {
+      "huri": 31,
+      "oth": 33,
+      "thibi": 3
+     }
+    },
+    "sg": {
+     "pred": {
+      "huri": 26,
+      "oth": 56,
+      "thibi": 0
+     }
+    },
+    "pl": {
+     "pred": {
+      "huri": 95,
+      "oth": 26,
+      "thibi": 0
+     },
+     "rel": {
+      "huri": 145,
+      "oth": 14,
+      "thibi": 4
+     }
+    }
+   },
+   "ބާވަތ": {
+    "noun": "ބާވަތް",
+    "sgi": {
+     "pred": {
+      "huri": 87,
+      "oth": 0,
+      "thibi": 0
+     }
+    },
+    "pl": {
+     "pred": {
+      "huri": 154,
+      "oth": 0,
+      "thibi": 0
+     },
+     "rel": {
+      "huri": 137,
+      "oth": 5,
+      "thibi": 0
+     }
+    }
+   },
+   "ކުލަ": {
+    "noun": "ކުލަ",
+    "sgi": {
+     "pred": {
+      "huri": 87,
+      "oth": 3,
+      "thibi": 0
+     }
+    },
+    "sg": {
+     "pred": {
+      "huri": 202,
+      "oth": 17,
+      "thibi": 0
+     },
+     "rel": {
+      "huri": 112,
+      "oth": 22,
+      "thibi": 0
+     }
+    },
+    "pl": {
+     "pred": {
+      "huri": 38,
+      "oth": 0,
+      "thibi": 0
+     },
+     "rel": {
+      "huri": 46,
+      "oth": 0,
+      "thibi": 0
+     }
+    }
+   },
+   "މުދާ": {
+    "noun": "މުދާ",
+    "sg": {
+     "pred": {
+      "huri": 263,
+      "oth": 9,
+      "thibi": 0
+     },
+     "rel": {
+      "huri": 366,
+      "oth": 43,
+      "thibi": 3
+     }
+    },
+    "pl": {
+     "rel": {
+      "huri": 202,
+      "oth": 0,
+      "thibi": 0
+     }
+    }
+   },
+   "އެއްޗެހި": {
+    "noun": "އެއްޗެހި",
+    "sg": {
+     "pred": {
+      "huri": 718,
+      "oth": 57,
+      "thibi": 8
+     },
+     "rel": {
+      "huri": 1869,
+      "oth": 35,
+      "thibi": 28
+     }
+    },
+    "pl": {
+     "pred": {
+      "huri": 104,
+      "oth": 6,
+      "thibi": 0
+     },
+     "rel": {
+      "huri": 286,
+      "oth": 6,
+      "thibi": 9
+     }
+    }
+   },
+   "ސްޓޮކ": {
+    "noun": "ސްޓޮކް",
+    "sg": {
+     "pred": {
+      "huri": 111,
+      "oth": 3,
+      "thibi": 0
+     },
+     "rel": {
+      "huri": 51,
+      "oth": 0,
+      "thibi": 0
+     }
+    }
+   },
+   "ސައިޒ": {
+    "noun": "ސައިޒް",
+    "sg": {
+     "pred": {
+      "huri": 27,
+      "oth": 3,
+      "thibi": 0
+     }
+    }
+   },
+   "ސިފަ": {
+    "noun": "ސިފަ",
+    "sgi": {
+     "pred": {
+      "huri": 231,
+      "oth": 24,
+      "thibi": 0
+     },
+     "rel": {
+      "huri": 87,
+      "oth": 9,
+      "thibi": 0
+     }
+    },
+    "sg": {
+     "pred": {
+      "huri": 224,
+      "oth": 27,
+      "thibi": 0
+     },
+     "rel": {
+      "huri": 107,
+      "oth": 11,
+      "thibi": 9
+     }
+    },
+    "pl": {
+     "pred": {
+      "huri": 832,
+      "oth": 10,
+      "thibi": 0
+     },
+     "rel": {
+      "huri": 77,
+      "oth": 3,
+      "thibi": 0
+     }
+    }
+   },
+   "ޝަކުވާ": {
+    "noun": "ޝަކުވާ",
+    "sgi": {
+     "pred": {
+      "huri": 12,
+      "oth": 397,
+      "thibi": 0
+     },
+     "rel": {
+      "huri": 11,
+      "oth": 21,
+      "thibi": 0
+     }
+    },
+    "sg": {
+     "pred": {
+      "huri": 71,
+      "oth": 153,
+      "thibi": 0
+     },
+     "rel": {
+      "huri": 21,
+      "oth": 50,
+      "thibi": 0
+     }
+    },
+    "pl": {
+     "pred": {
+      "huri": 168,
+      "oth": 72,
+      "thibi": 0
+     },
+     "rel": {
+      "huri": 137,
+      "oth": 13,
+      "thibi": 0
+     }
+    }
+   },
+   "ސަބަބ": {
+    "noun": "ސަބަބު",
+    "sgi": {
+     "pred": {
+      "huri": 47,
+      "oth": 1922,
+      "thibi": 0
+     },
+     "rel": {
+      "huri": 51,
+      "oth": 112,
+      "thibi": 7
+     }
+    },
+    "sg": {
+     "pred": {
+      "huri": 37,
+      "oth": 67,
+      "thibi": 5
+     },
+     "rel": {
+      "huri": 117,
+      "oth": 115,
+      "thibi": 19
+     }
+    },
+    "pl": {
+     "pred": {
+      "huri": 1261,
+      "oth": 247,
+      "thibi": 0
+     },
+     "rel": {
+      "huri": 60,
+      "oth": 18,
+      "thibi": 0
+     }
+    }
+   },
+   "ޖަވާބ": {
+    "noun": "ޖަވާބު",
+    "sgi": {
+     "pred": {
+      "huri": 0,
+      "oth": 59,
+      "thibi": 0
+     }
+    },
+    "sg": {
+     "pred": {
+      "huri": 24,
+      "oth": 48,
+      "thibi": 0
+     },
+     "rel": {
+      "huri": 19,
+      "oth": 38,
+      "thibi": 0
+     }
+    }
+   },
+   "ނަތީޖާ": {
+    "noun": "ނަތީޖާ",
+    "sgi": {
+     "pred": {
+      "huri": 0,
+      "oth": 105,
+      "thibi": 0
+     }
+    },
+    "sg": {
+     "pred": {
+      "huri": 16,
+      "oth": 179,
+      "thibi": 0
+     },
+     "rel": {
+      "huri": 32,
+      "oth": 33,
+      "thibi": 0
+     }
+    }
+   },
+   "ބަދަލ": {
+    "noun": "ބަދަލު",
+    "sgi": {
+     "pred": {
+      "huri": 8,
+      "oth": 370,
+      "thibi": 0
+     },
+     "rel": {
+      "huri": 21,
+      "oth": 40,
+      "thibi": 3
+     }
+    },
+    "sg": {
+     "rel": {
+      "huri": 111,
+      "oth": 72,
+      "thibi": 7
+     }
+    },
+    "pl": {
+     "pred": {
+      "huri": 136,
+      "oth": 23,
+      "thibi": 0
+     },
+     "rel": {
+      "huri": 138,
+      "oth": 9,
+      "thibi": 3
+     }
+    }
+   },
+   "ތަފާތ": {
+    "noun": "ތަފާތު",
+    "sgi": {
+     "pred": {
+      "huri": 358,
+      "oth": 187,
+      "thibi": 0
+     },
+     "rel": {
+      "huri": 29,
+      "oth": 8,
+      "thibi": 0
+     }
+    },
+    "sg": {
+     "pred": {
+      "huri": 331,
+      "oth": 67,
+      "thibi": 0
+     },
+     "rel": {
+      "huri": 860,
+      "oth": 206,
+      "thibi": 29
+     }
+    },
+    "pl": {
+     "pred": {
+      "huri": 654,
+      "oth": 25,
+      "thibi": 0
+     },
+     "rel": {
+      "huri": 169,
+      "oth": 23,
+      "thibi": 0
+     }
+    }
+   },
+   "ފަރަގ": {
+    "noun": "ފަރަގު",
+    "sgi": {
+     "pred": {
+      "huri": 160,
+      "oth": 151,
+      "thibi": 0
+     }
+    },
+    "sg": {
+     "pred": {
+      "huri": 102,
+      "oth": 30,
+      "thibi": 0
+     },
+     "rel": {
+      "huri": 138,
+      "oth": 638,
+      "thibi": 0
+     }
+    },
+    "pl": {
+     "pred": {
+      "huri": 88,
+      "oth": 5,
+      "thibi": 0
+     },
+     "rel": {
+      "huri": 68,
+      "oth": 0,
+      "thibi": 0
+     }
+    }
+   },
+   "ހިޔާލ": {
+    "noun": "ހިޔާލު",
+    "sgi": {
+     "pred": {
+      "huri": 11,
+      "oth": 44,
+      "thibi": 0
+     }
+    },
+    "sg": {
+     "pred": {
+      "huri": 463,
+      "oth": 20,
+      "thibi": 0
+     },
+     "rel": {
+      "huri": 45,
+      "oth": 142,
+      "thibi": 0
+     }
+    },
+    "pl": {
+     "pred": {
+      "huri": 58,
+      "oth": 0,
+      "thibi": 0
+     }
+    }
+   },
+   "ދައުރ": {
+    "noun": "ދައުރު",
+    "sgi": {
+     "pred": {
+      "huri": 0,
+      "oth": 841,
+      "thibi": 0
+     }
+    },
+    "sg": {
+     "pred": {
+      "huri": 0,
+      "oth": 316,
+      "thibi": 0
+     },
+     "rel": {
+      "huri": 19,
+      "oth": 125,
+      "thibi": 22
+     }
+    }
+   },
+   "ޒިންމާ": {
+    "noun": "ޒިންމާ",
+    "sgi": {
+     "pred": {
+      "huri": 0,
+      "oth": 326,
+      "thibi": 0
+     },
+     "rel": {
+      "huri": 0,
+      "oth": 236,
+      "thibi": 0
+     }
+    },
+    "sg": {
+     "pred": {
+      "huri": 4,
+      "oth": 694,
+      "thibi": 0
+     },
+     "rel": {
+      "huri": 9,
+      "oth": 224,
+      "thibi": 3
+     }
+    },
+    "pl": {
+     "pred": {
+      "huri": 52,
+      "oth": 92,
+      "thibi": 0
+     },
+     "rel": {
+      "huri": 28,
+      "oth": 26,
+      "thibi": 0
+     }
+    }
+   },
+   "ގެރެންޓީ": {
+    "noun": "ގެރެންޓީ",
+    "sg": {
+     "pred": {
+      "huri": 5,
+      "oth": 65,
+      "thibi": 0
+     }
+    }
+   },
+   "ޕްރޮޑަކްޓ": {
+    "noun": "ޕްރޮޑަކްޓް",
+    "pl": {
+     "rel": {
+      "huri": 36,
+      "oth": 0,
+      "thibi": 0
+     }
+    }
+   },
+   "ޝައުގ": {
+    "noun": "ޝައުގު",
+    "sgi": {
+     "pred": {
+      "huri": 59,
+      "oth": 29,
+      "thibi": 0
+     }
+    },
+    "sg": {
+     "pred": {
+      "huri": 311,
+      "oth": 24,
+      "thibi": 0
+     },
+     "rel": {
+      "huri": 48,
+      "oth": 65,
+      "thibi": 0
+     }
+    }
+   },
+   "ފޮތ": {
+    "noun": "ފޮތް",
+    "sgi": {
+     "pred": {
+      "huri": 20,
+      "oth": 105,
+      "thibi": 0
+     },
+     "rel": {
+      "huri": 37,
+      "oth": 94,
+      "thibi": 0
+     }
+    },
+    "sg": {
+     "pred": {
+      "huri": 41,
+      "oth": 109,
+      "thibi": 0
+     },
+     "rel": {
+      "huri": 91,
+      "oth": 302,
+      "thibi": 3
+     }
+    },
+    "pl": {
+     "pred": {
+      "huri": 135,
+      "oth": 3,
+      "thibi": 0
+     },
+     "rel": {
+      "huri": 247,
+      "oth": 0,
+      "thibi": 0
+     }
+    }
+   },
+   "ކާރ": {
+    "noun": "ކާރު",
+    "sgi": {
+     "pred": {
+      "huri": 0,
+      "oth": 100,
+      "thibi": 0
+     },
+     "rel": {
+      "huri": 15,
+      "oth": 66,
+      "thibi": 4
+     }
+    },
+    "sg": {
+     "pred": {
+      "huri": 25,
+      "oth": 339,
+      "thibi": 0
+     },
+     "rel": {
+      "huri": 48,
+      "oth": 118,
+      "thibi": 35
+     }
+    },
+    "pl": {
+     "pred": {
+      "huri": 24,
+      "oth": 8,
+      "thibi": 0
+     },
+     "rel": {
+      "huri": 31,
+      "oth": 0,
+      "thibi": 5
+     }
+    }
+   },
+   "ރަށ": {
+    "noun": "ރަށް",
+    "sgi": {
+     "pred": {
+      "huri": 19,
+      "oth": 363,
+      "thibi": 0
+     },
+     "rel": {
+      "huri": 103,
+      "oth": 1040,
+      "thibi": 76
+     }
+    },
+    "sg": {
+     "rel": {
+      "huri": 150,
+      "oth": 267,
+      "thibi": 39
+     }
+    },
+    "pl": {
+     "pred": {
+      "huri": 228,
+      "oth": 138,
+      "thibi": 6
+     },
+     "rel": {
+      "huri": 486,
+      "oth": 125,
+      "thibi": 7
+     }
+    }
+   },
+   "ބިނ": {
+    "noun": "ބިން",
+    "sg": {
+     "rel": {
+      "huri": 336,
+      "oth": 261,
+      "thibi": 6
+     }
+    },
+    "pl": {
+     "pred": {
+      "huri": 97,
+      "oth": 59,
+      "thibi": 0
+     },
+     "rel": {
+      "huri": 377,
+      "oth": 47,
+      "thibi": 0
+     }
+    }
+   },
+   "މަގ": {
+    "noun": "މަގު",
+    "sgi": {
+     "pred": {
+      "huri": 17,
+      "oth": 246,
+      "thibi": 0
+     },
+     "rel": {
+      "huri": 30,
+      "oth": 188,
+      "thibi": 0
+     }
+    },
+    "sg": {
+     "pred": {
+      "huri": 91,
+      "oth": 350,
+      "thibi": 0
+     },
+     "rel": {
+      "huri": 137,
+      "oth": 530,
+      "thibi": 0
+     }
+    },
+    "pl": {
+     "pred": {
+      "huri": 152,
+      "oth": 252,
+      "thibi": 0
+     },
+     "rel": {
+      "huri": 241,
+      "oth": 154,
+      "thibi": 0
+     }
+    }
+   },
+   "ގެ": {
+    "noun": "ގެ",
+    "sgi": {
+     "pred": {
+      "huri": 225,
+      "oth": 21,
+      "thibi": 0
+     },
+     "rel": {
+      "huri": 326,
+      "oth": 33,
+      "thibi": 10
+     }
+    },
+    "pl": {
+     "pred": {
+      "huri": 201,
+      "oth": 0,
+      "thibi": 3
+     },
+     "rel": {
+      "huri": 204,
+      "oth": 0,
+      "thibi": 8
+     }
+    }
+   },
+   "ފޯނ": {
+    "noun": "ފޯނު",
+    "sgi": {
+     "pred": {
+      "huri": 10,
+      "oth": 118,
+      "thibi": 0
+     },
+     "rel": {
+      "huri": 12,
+      "oth": 67,
+      "thibi": 0
+     }
+    },
+    "sg": {
+     "pred": {
+      "huri": 57,
+      "oth": 1024,
+      "thibi": 0
+     },
+     "rel": {
+      "huri": 141,
+      "oth": 2516,
+      "thibi": 0
+     }
+    }
+   },
+   "ފިހާރަ": {
+    "noun": "ފިހާރަ",
+    "sgi": {
+     "pred": {
+      "huri": 105,
+      "oth": 0,
+      "thibi": 0
+     },
+     "rel": {
+      "huri": 76,
+      "oth": 0,
+      "thibi": 0
+     }
+    },
+    "sg": {
+     "pred": {
+      "huri": 927,
+      "oth": 6,
+      "thibi": 0
+     },
+     "rel": {
+      "huri": 154,
+      "oth": 0,
+      "thibi": 4
+     }
+    },
+    "pl": {
+     "pred": {
+      "huri": 161,
+      "oth": 12,
+      "thibi": 0
+     },
+     "rel": {
+      "huri": 54,
+      "oth": 0,
+      "thibi": 0
+     }
+    }
+   },
+   "ލިސްޓ": {
+    "noun": "ލިސްޓު",
+    "sgi": {
+     "pred": {
+      "huri": 0,
+      "oth": 106,
+      "thibi": 0
+     },
+     "rel": {
+      "huri": 4,
+      "oth": 67,
+      "thibi": 4
+     }
+    },
+    "sg": {
+     "pred": {
+      "huri": 8,
+      "oth": 64,
+      "thibi": 0
+     },
+     "rel": {
+      "huri": 8,
+      "oth": 47,
+      "thibi": 0
+     }
+    }
+   },
+   "ޕްލޭނ": {
+    "noun": "ޕްލޭން",
+    "sgi": {
+     "pred": {
+      "huri": 0,
+      "oth": 475,
+      "thibi": 0
+     },
+     "rel": {
+      "huri": 0,
+      "oth": 42,
+      "thibi": 0
+     }
+    },
+    "sg": {
+     "rel": {
+      "huri": 6,
+      "oth": 59,
+      "thibi": 0
+     }
+    },
+    "pl": {
+     "pred": {
+      "huri": 60,
+      "oth": 33,
+      "thibi": 0
+     },
+     "rel": {
+      "huri": 30,
+      "oth": 10,
+      "thibi": 0
+     }
+    }
+   },
+   "ނަނ": {
+    "noun": "ނަން",
+    "sg": {
+     "rel": {
+      "huri": 34,
+      "oth": 106,
+      "thibi": 12
+     }
+    },
+    "pl": {
+     "pred": {
+      "huri": 46,
+      "oth": 20,
+      "thibi": 0
+     },
+     "rel": {
+      "huri": 60,
+      "oth": 7,
+      "thibi": 0
+     }
+    }
+   },
+   "ޕްރޮގްރާމ": {
+    "noun": "ޕްރޮގްރާމް",
+    "sgi": {
+     "pred": {
+      "huri": 4,
+      "oth": 31,
+      "thibi": 0
+     },
+     "rel": {
+      "huri": 13,
+      "oth": 32,
+      "thibi": 0
+     }
+    },
+    "sg": {
+     "pred": {
+      "huri": 3,
+      "oth": 116,
+      "thibi": 0
+     }
+    },
+    "pl": {
+     "pred": {
+      "huri": 25,
+      "oth": 24,
+      "thibi": 0
+     },
+     "rel": {
+      "huri": 35,
+      "oth": 0,
+      "thibi": 0
+     }
+    }
+   },
+   "އޮފީސ": {
+    "noun": "އޮފީސް",
+    "sg": {
+     "pred": {
+      "huri": 821,
+      "oth": 35,
+      "thibi": 0
+     },
+     "rel": {
+      "huri": 97,
+      "oth": 13,
+      "thibi": 8
+     }
+    },
+    "pl": {
+     "pred": {
+      "huri": 195,
+      "oth": 7,
+      "thibi": 0
+     }
+    }
+   },
+   "މީހުނ": {
+    "noun": "މީހުން",
+    "pl": {
+     "pred": {
+      "huri": 3,
+      "oth": 17,
+      "thibi": 106
+     },
+     "rel": {
+      "huri": 2777,
+      "oth": 829,
+      "thibi": 15764
+     }
+    }
+   },
+   "ކުދިނ": {
+    "noun": "ކުދިން",
+    "pl": {
+     "pred": {
+      "huri": 0,
+      "oth": 4,
+      "thibi": 122
+     },
+     "rel": {
+      "huri": 464,
+      "oth": 43,
+      "thibi": 1493
+     }
+    }
+   },
+   "ބޭފުޅުނ": {
+    "noun": "ބޭފުޅުން",
+    "pl": {
+     "pred": {
+      "huri": 0,
+      "oth": 0,
+      "thibi": 72
+     },
+     "rel": {
+      "huri": 243,
+      "oth": 101,
+      "thibi": 886
+     }
+    }
+   },
+   "މެމްބަރުނ": {
+    "noun": "މެމްބަރުން",
+    "sg": {
+     "rel": {
+      "huri": 0,
+      "oth": 13,
+      "thibi": 171
+     }
+    },
+    "pl": {
+     "pred": {
+      "huri": 0,
+      "oth": 0,
+      "thibi": 56
+     }
+    }
+   },
+   "މުވައްޒަފުނ": {
+    "noun": "މުވައްޒަފުން",
+    "sg": {
+     "rel": {
+      "huri": 44,
+      "oth": 17,
+      "thibi": 552
+     }
+    },
+    "pl": {
+     "pred": {
+      "huri": 0,
+      "oth": 0,
+      "thibi": 38
+     },
+     "rel": {
+      "huri": 5,
+      "oth": 0,
+      "thibi": 35
+     }
+    }
+   },
+   "ދަރިވަރުނ": {
+    "noun": "ދަރިވަރުން",
+    "sg": {
+     "rel": {
+      "huri": 35,
+      "oth": 11,
+      "thibi": 165
+     }
+    }
+   },
+   "ފުލުހުނ": {
+    "noun": "ފުލުހުން",
+    "pl": {
+     "rel": {
+      "huri": 29,
+      "oth": 7,
+      "thibi": 399
+     }
+    }
+   },
+   "ރައްޔިތުނ": {
+    "noun": "ރައްޔިތުން",
+    "sg": {
+     "rel": {
+      "huri": 39,
+      "oth": 269,
+      "thibi": 490
+     }
+    },
+    "pl": {
+     "pred": {
+      "huri": 0,
+      "oth": 0,
+      "thibi": 89
+     },
+     "rel": {
+      "huri": 5,
+      "oth": 3,
+      "thibi": 27
+     }
+    }
+   },
+   "ޒުވާނުނ": {
+    "noun": "ޒުވާނުން",
+    "sg": {
+     "rel": {
+      "huri": 59,
+      "oth": 8,
+      "thibi": 323
+     }
+    },
+    "pl": {
+     "pred": {
+      "huri": 0,
+      "oth": 0,
+      "thibi": 33
+     },
+     "rel": {
+      "huri": 10,
+      "oth": 0,
+      "thibi": 46
+     }
+    }
+   },
+   "ކުޅުންތެރިނ": {
+    "noun": "ކުޅުންތެރިން",
+    "sg": {
+     "rel": {
+      "huri": 63,
+      "oth": 5,
+      "thibi": 268
+     }
+    },
+    "pl": {
+     "pred": {
+      "huri": 0,
+      "oth": 0,
+      "thibi": 171
+     }
+    }
+   },
+   "ފަތުރުވެރިނ": {
+    "noun": "ފަތުރުވެރިން",
+    "sg": {
+     "rel": {
+      "huri": 12,
+      "oth": 4,
+      "thibi": 96
+     }
+    }
+   },
+   "އަންހެނުނ": {
+    "noun": "އަންހެނުން",
+    "sg": {
+     "rel": {
+      "huri": 45,
+      "oth": 15,
+      "thibi": 168
+     }
+    },
+    "pl": {
+     "rel": {
+      "huri": 0,
+      "oth": 0,
+      "thibi": 46
+     }
+    }
+   },
+   "ފިރިހެނުނ": {
+    "noun": "ފިރިހެނުން",
+    "sg": {
+     "rel": {
+      "huri": 29,
+      "oth": 0,
+      "thibi": 84
+     }
+    }
+   },
+   "ޑޮކްޓަރުނ": {
+    "noun": "ޑޮކްޓަރުން",
+    "sg": {
+     "rel": {
+      "huri": 24,
+      "oth": 0,
+      "thibi": 110
+     }
+    }
+   },
+   "ބަޔަކ": {
+    "noun": "ބަޔަކު",
+    "sg": {
+     "pred": {
+      "huri": 42,
+      "oth": 60,
+      "thibi": 5032
+     },
+     "rel": {
+      "huri": 306,
+      "oth": 228,
+      "thibi": 3686
+     }
+    }
+   },
+   "މީހަކ": {
+    "noun": "މީހަކު",
+    "sg": {
+     "pred": {
+      "huri": 3461,
+      "oth": 310,
+      "thibi": 823
+     },
+     "rel": {
+      "huri": 6074,
+      "oth": 1408,
+      "thibi": 327
+     }
+    }
+   }
+  }
+ },
+ "human_plural": {
+  "_about": "Human plurals in -ން (މީހުން, ކުދިން, ބޭފުޅުން...) directly before an existential verb take ތިބި. The main table cannot hold these: its miner skips every word in -ން before the verb, because most are ablatives ('ސަރުކާރުން'). These counts come from a second pass over the same corpus that looks at exactly these words (mine_human.py). The stricter max_used_share is deliberate. 'ފުލުހުން އޮތީ ...' ('the police have ...') is a real focus construction, at 8.5%, so only the rarer mismatches are flagged. A bare participle followed by a noun that it can modify ('މަސްވެރިން ހުރި ކަންބޮޑުވުންތައް', 'the concerns fishermen have') is skipped.",
+  "thresholds": {
+   "min_n": 50,
+   "min_share": 0.8,
+   "max_used_share": 0.05,
+   "error_share": 0.9,
+   "error_n": 100
+  },
+  "nouns": {
+   "ސިފައިން": {
+    "pred": {
+     "huri": 5,
+     "oth": 29,
+     "thibi": 2870
+    }
+   },
+   "ރައްޔިތުން": {
+    "pred": {
+     "huri": 17,
+     "oth": 118,
+     "thibi": 4012
+    }
+   },
+   "މީހުން": {
+    "pred": {
+     "huri": 173,
+     "oth": 210,
+     "thibi": 12298
+    }
+   },
+   "މެމްބަރުން": {
+    "pred": {
+     "huri": 5,
+     "oth": 11,
+     "thibi": 2257
+    }
+   },
+   "ބޭފުޅުން": {
+    "pred": {
+     "huri": 28,
+     "oth": 41,
+     "thibi": 2191
+    }
+   },
+   "ކުދިން": {
+    "pred": {
+     "huri": 71,
+     "oth": 35,
+     "thibi": 2661
+    }
+   },
+   "މުވައްޒަފުން": {
+    "pred": {
+     "huri": 3,
+     "oth": 6,
+     "thibi": 1554
+    }
+   },
+   "ދަރިން": {
+    "pred": {
+     "huri": 33,
+     "oth": 8,
+     "thibi": 1095
+    }
+   },
+   "ޓީޗަރުން": {
+    "pred": {
+     "huri": 3,
+     "oth": 1,
+     "thibi": 216
+    }
+   },
+   "ފުލުހުން": {
+    "pred": {
+     "huri": 16,
+     "oth": 77,
+     "thibi": 764
+    }
+   },
+   "ފިރިހެނުން": {
+    "pred": {
+     "huri": 4,
+     "oth": 5,
+     "thibi": 221
+    }
+   },
+   "ފަރާތްތައް": {
+    "pred": {
+     "huri": 21,
+     "oth": 18,
+     "thibi": 273
+    }
+   },
+   "ދަރިވަރުން": {
+    "pred": {
+     "huri": 1,
+     "oth": 2,
+     "thibi": 491
+    }
+   },
+   "މަސްވެރިން": {
+    "pred": {
+     "huri": 3,
+     "oth": 2,
+     "thibi": 258
+    }
+   },
+   "ކުޅުންތެރިން": {
+    "pred": {
+     "huri": 14,
+     "oth": 3,
+     "thibi": 1129
+    }
+   },
+   "އަންހެނުން": {
+    "pred": {
+     "huri": 95,
+     "oth": 45,
+     "thibi": 368
+    }
+   },
+   "މުދައްރިސުން": {
+    "pred": {
+     "huri": 3,
+     "oth": 0,
+     "thibi": 69
+    }
+   },
+   "ޑޮކްޓަރުން": {
+    "pred": {
+     "huri": 3,
+     "oth": 27,
+     "thibi": 334
+    }
+   },
+   "ޒުވާނުން": {
+    "pred": {
+     "huri": 3,
+     "oth": 4,
+     "thibi": 422
+    }
+   },
+   "ކަސްޓަމަރުން": {
+    "pred": {
+     "huri": 4,
+     "oth": 1,
+     "thibi": 105
+    }
+   },
+   "އެކުވެރިން": {
+    "pred": {
+     "huri": 6,
+     "oth": 0,
+     "thibi": 204
+    }
+   },
+   "ވިޔަފާރިވެރިން": {
+    "pred": {
+     "huri": 3,
+     "oth": 4,
+     "thibi": 140
+    }
+   },
+   "ބަލިމީހުން": {
+    "pred": {
+     "huri": 0,
+     "oth": 1,
+     "thibi": 72
+    }
+   },
+   "ފަތުރުވެރިން": {
+    "pred": {
+     "huri": 1,
+     "oth": 2,
+     "thibi": 191
+    }
+   },
+   "ބޭބޭފުޅުން": {
+    "pred": {
+     "huri": 0,
+     "oth": 2,
+     "thibi": 59
+    }
+   }
+  }
+ },
+ "rules": [
+  {
+   "id": "gr_honorific_first_person",
+   "severity": "error",
+   "pattern": "(?<![ހ-޿])([ހ-޿]*)ކުރައްވާނަން(?![ހ-޿])",
+   "replace": "\\1ކުރާނަން",
+   "why": "-ނަން is first person ('I/we will'). Honorific verbs (ކުރައްވާ, ދެއްވާ, ބައްލަވާ...) are for the person addressed or spoken about, never for yourself. 'އަޅުގަނޑުމެން ޑެލިވަރީ ކޮށްދެއްވާނަން' is wrong. The speaker humbles their own verb: ކުރާނަން, ކޮށްދޭނަން, ދަންނަވާނަން.",
+   "evidence": "News+speeches+Majlis: ...ކުރައްވާނަން 43 against ...ކުރާނަން 57,238 (0.08%). Sampled hits are quoted speech in headlines."
+  },
+  {
+   "id": "gr_honorific_first_person",
+   "severity": "error",
+   "pattern": "(?<![ހ-޿])([ހ-޿]*)ދެއްވާނަން(?![ހ-޿])",
+   "replace": "\\1ދޭނަން",
+   "why": "As above: ކޮށްދެއްވާނަން / ދެއްވާނަން is the honorific verb with the first-person ending. Say ކޮށްދޭނަން / ދޭނަން.",
+   "evidence": "...ދެއްވާނަން 136 against ...ދޭނަން 20,152 (0.7%). Most of the 136 are one headline repeated: 'މޯދީއަށް އެއްބާރުލުން ދެއްވާނަން: ޓްރަމްޕް'."
+  },
+  {
+   "id": "gr_honorific_first_person",
+   "severity": "error",
+   "pattern": "(?<![ހ-޿])(ބައްލަވާ|ގުޅުއްވާ|ހޯއްދަވާ|ދައްކަވާ|ވިދާޅުވާ|ވަޑައިގަންނަވާ)ނަން(?![ހ-޿])",
+   "replace": "",
+   "why": "Honorific verb with the first-person ending. Use the plain verb for yourself: ބަލާނަން, ގުޅާނަން, ހޯދާނަން, ދައްކާނަން, ދަންނަވާނަން (not ވިދާޅުވާނަން), ދާނަން/އަންނާނަން.",
+   "evidence": "These six honorific -ނަން forms: 9 in total, against 11,614 for ބަލާނަން/ގުޅާނަން/ހޯދާނަން/ދައްކާނަން/ދަންނަވާނަން/ދާނަން/އަންނާނަން."
+  },
+  {
+   "id": "gr_numeral_plural",
+   "severity": "error",
+   "pattern": "(?<![ހ-޿])(ދެ|ތިން|ހަތަރު|ފަސް|ހަތް|ނުވަ|ދިހަ) (?!ކަންތައް|ކަންތަކެއް)([ހ-޿]+?)(?:ތައް|ތަކެއް)(?![ހ-޿])",
+   "replace": "\\1 \\2",
+   "why": "After a numeral the noun stays singular: ދެ ކުލަ, ތިން ބާވަތް, not ދެ ކުލަތައް. The one lexicalised exception is ކަންތައް ('matters'): ދެ ކަންތައް is normal.",
+   "evidence": "Numeral word + a noun in -ތައް/-ތަކެއް: 289, against 1,022,764 numeral + word (0.03%). Numeral + ކަންތައް: 1,454, so it is exempt."
+  },
+  {
+   "id": "gr_plural_uncountable",
+   "severity": "error",
+   "pattern": "(?<![ހ-޿])([ހ-޿]+ތެރިކަ)(?:ން|މް)(?:ތައް|ތަކެއް)(?![ހ-޿])",
+   "replace": "\\1ން",
+   "why": "Abstract -ތެރިކަން nouns are not pluralised: ބޭނުންތެރިކަން, not ބޭނުންތެރިކަންތައް (an English 'benefits' calque). To list several, name them or use ބޭނުންތެރި ކަންތައްތައް / ފައިދާތައް.",
+   "evidence": "-ތެރިކަން with a plural suffix: 0 real uses in the corpus. The 10 regex hits are all the question particle ތަ؟. Tokens in -ތެރިކަން: 118,748."
+  },
+  {
+   "id": "gr_plural_uncountable",
+   "severity": "error",
+   "pattern": "(?<![ހ-޿])(ލޯބި|ޝުކުރު|ހޫނު|ހިލޭ|ކޮލިޓީ)(?:ތައް|ތަކެއް)(?![ހ-޿])",
+   "replace": "\\1",
+   "why": "Mass nouns that Dhivehi does not pluralise.",
+   "evidence": "Corpus vocabulary: ލޯބި 12,383 / plural 0; ޝުކުރު 20,555 / 0; ހޫނު 8,779 / 0; ހިލޭ 23,992 / 0; ކޮލިޓީ 3,169 / 22 (0.7%)."
+  },
+  {
+   "id": "gr_sentence_initial_nama",
+   "severity": "error",
+   "pattern": "(?:^|(?<=[.!؟?\\n]\\s)|(?<=[.!؟?\\n]))ނަމަ(?=\\s*،)",
+   "replace": "ނަމަވެސް",
+   "why": "'However' at the start of a sentence is ނަމަވެސް. Bare ނަމަ means 'if' and closes a conditional clause ('ސުވާލެއް އޮތް ނަމަ، ...'); it cannot start one.",
+   "evidence": "Sentence-initial 'ނަމަވެސް،' 34,553; sentence-initial 'ނަމަ،' 9."
+  },
+  {
+   "id": "gr_nama_after_finite",
+   "severity": "error",
+   "pattern": "(?<![ހ-޿])([ހ-޿]+ެވެ) ނަމަ(?![ހ-޿])",
+   "replace": "",
+   "why": "ނަމަ ('if') follows a participle or a verbal form (ކުރާ ނަމަ, ހުރި ނަމަ, ކޮށްފި ނަމަ), never the sentence-final -އެވެ form. Drop the -އެވެ ending: 'ހުރެއެވެ ނަމަ' becomes 'ހުރި ނަމަ'.",
+   "evidence": "Finite -ެވެ + ނަމަ: 1 in the corpus, against 139,675 word + ނަމަ."
+  }
+ ]
+}

@@ -1,0 +1,17 @@
+{
+  "_note": "Radheef 'wordclass' codes are abbreviated Dhivehi grammar terms. Confident mappings below; codes marked confidence 'unverified' are best-effort and need a Dhivehi speaker to confirm. Codes beginning with '(' are a parenthetical usage label that leaked into the wordclass column (e.g. '(ބދ' = colloquial) and are not true parts of speech.",
+  "codes": {
+    "ނ":   {"dv": "ނަން",        "en": "noun",              "count": 19978, "confidence": "high"},
+    "މ":   {"dv": "މަޞްދަރު",     "en": "verbal noun (masdar)", "count": 8928, "confidence": "high"},
+    "":    {"dv": "",            "en": "(unclassified)",    "count": 7446,  "confidence": "high"},
+    "ނއ":  {"dv": "ނަން އިތުރު",   "en": "adjective",         "count": 1027,  "confidence": "high"},
+    "ކއ":  {"dv": "ކަން އިތުރު",   "en": "adverb",            "count": 172,   "confidence": "medium"},
+    "ނއނ": {"dv": "",            "en": "noun-adjective subtype?", "count": 620, "confidence": "unverified"},
+    "އ":   {"dv": "",            "en": "letter / particle?", "count": 306,  "confidence": "unverified"},
+    "ބދ":  {"dv": "ބަހުރުވަ",      "en": "colloquial / dialect", "count": 8,  "confidence": "medium"},
+    "ގބ":  {"dv": "",            "en": "?",                 "count": 83,    "confidence": "unverified"},
+    "އކ":  {"dv": "",            "en": "?",                 "count": 28,    "confidence": "unverified"},
+    "އތ":  {"dv": "",            "en": "?",                 "count": 15,    "confidence": "unverified"},
+    "އމ":  {"dv": "",            "en": "?",                 "count": 8,     "confidence": "unverified"}
+  }
+}

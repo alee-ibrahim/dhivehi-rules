@@ -1,0 +1,144 @@
+{
+  "_source": "Deterministic TTS preprocessing rules, the spoken-register rulebook, and a respelling list for TTS.",
+  "_usage": "Written -> spoken Dhivehi for text-to-speech. These are reading rules, not spelling rules: never write the spoken forms back into text.",
+  "atoll_codes": {
+    "_rule": "An atoll code written with a full stop before a place name (ބ. ތުޅާދޫ, ބ.އަތޮޅު) is read as the letter name(s). Match two-letter codes first so ހއ. is not read as ހ + އ.",
+    "_regex": "(?<![ހ-޿])(ހއ|ހދ|އއ|އދ|ގއ|ގދ|ށ|ނ|ބ|ޅ|ކ|ވ|މ|ފ|ދ|ތ|ލ|ޏ|ސ|ރ)\\.\\s*(?=[ހ-ޥ])",
+    "codes": {
+      "ހއ": "ހާ އަލިފު",
+      "ހދ": "ހާ ދާލު",
+      "އއ": "އަލިފު އަލިފު",
+      "އދ": "އަލިފު ދާލު",
+      "ގއ": "ގާފު އަލިފު",
+      "ގދ": "ގާފު ދާލު",
+      "ށ": "ޝަވިޔަނި",
+      "ނ": "ނޫނު",
+      "ބ": "ބާ",
+      "ޅ": "ޅަވިޔަނި",
+      "ކ": "ކާފު",
+      "ވ": "ވާވު",
+      "މ": "މީމު",
+      "ފ": "ފާފު",
+      "ދ": "ދާލު",
+      "ތ": "ތާ",
+      "ލ": "ލާމު",
+      "ޏ": "ޏަވިޔަނި",
+      "ސ": "ސީނު",
+      "ރ": "ރާ"
+    }
+  },
+  "fixed_substitutions": [
+    {
+      "written": "ﷺ",
+      "spoken": "ޞައްލަލްލާހު ޢަލައިހި ވަސައްލަމް",
+      "note": "ligature expanded to the recited phrase"
+    },
+    {
+      "written": "ﷲ",
+      "spoken": "އައްލާހު",
+      "note": "ligature has no letter-by-letter reading"
+    },
+    {
+      "written": "<digits>ރ.",
+      "spoken": "<digits> ރުފިޔާ",
+      "regex": "(\\d)\\s*ރ\\.(?![ހ-ޥ])",
+      "note": "rufiyaa marker, e.g. 4.72ރ. (numbers are spelled out separately)"
+    },
+    {
+      "written": "ޑރ.",
+      "spoken": "ޑޮކްޓަރ",
+      "regex": "(?<![ހ-޿])ޑރ\\.\\s*",
+      "note": "title abbreviation"
+    },
+    {
+      "written": "ކެޕްޓަން.",
+      "spoken": "ކެޕްޓަން",
+      "regex": "(?<![ހ-޿])ކެޕްޓަން\\.\\s*",
+      "note": "trailing stop after the title is not a sentence end"
+    }
+  ],
+  "not_read_aloud": {
+    "_rule": "Removed before TTS during preprocessing.",
+    "items": [
+      "URLs (http..., www..., pic.twitter.com/...)",
+      "@handles and #hashtags",
+      "emoji",
+      "quotation marks \" “ ” « »"
+    ],
+    "brackets": "( ) [ ] become a pause (،)"
+  },
+  "spoken_register_endings": {
+    "_rule": "Written Dhivehi ends sentences and clauses with the formal literary suffix -ެވެ (އެވެ / ށެވެ / ނެވެ / ކެވެ ...), which is not said in speech. In the spoken register each is replaced with the natural spoken form of the same word; nothing else in the sentence changes. This needs grammar, so it is handed to a language model as a rulebook with these examples; it is not a regex.",
+    "examples": [
+      {
+        "written": "ލިބުނެވެ",
+        "spoken": "ލިބުނު"
+      },
+      {
+        "written": "ވިދާޅުވިއެވެ",
+        "spoken": "ވިދާޅުވި"
+      },
+      {
+        "written": "އަންނާނެއެވެ",
+        "spoken": "އަންނާނެ"
+      },
+      {
+        "written": "ހުޅުވައިފިއެވެ",
+        "spoken": "ހުޅުވައިފި"
+      },
+      {
+        "written": "ވަޑައިގަތެވެ",
+        "spoken": "ވަޑައިގަތް"
+      },
+      {
+        "written": "ހާމަކުރެއެވެ",
+        "spoken": "ހާމަކުރޭ"
+      },
+      {
+        "written": "ބަދަލުކޮށްފައެވެ",
+        "spoken": "ބަދަލުކޮށްފައި"
+      },
+      {
+        "written": "ކަމަށެވެ",
+        "spoken": "ކަމަށް"
+      },
+      {
+        "written": "މީހެކެވެ",
+        "spoken": "މީހެއް"
+      },
+      {
+        "written": "ތެރެއިންނެވެ",
+        "spoken": "ތެރެއިން"
+      },
+      {
+        "written": "މަދުންނެވެ",
+        "spoken": "މަދުން"
+      },
+      {
+        "written": "ރިޕޯޓެވެ",
+        "spoken": "ރިޕޯޓު"
+      },
+      {
+        "written": "ދިޔައީމެވެ",
+        "spoken": "ދިޔައީމު"
+      }
+    ]
+  },
+  "respellings": {
+    "_rule": "Phonetic respellings offered to a TTS voice as an alternative to the standard spelling, so the voice says the sound rather than the letters. Both spellings are tried and the better take is kept. Never use them in written text.",
+    "pairs": [
+      {
+        "standard": "ކޮންމެ",
+        "say_as": "ކޮހްމެ"
+      },
+      {
+        "standard": "ދުވަހަކު",
+        "say_as": "ދުވަހަގު"
+      },
+      {
+        "standard": "އެންމެ",
+        "say_as": "އެހްމެ"
+      }
+    ]
+  }
+}
